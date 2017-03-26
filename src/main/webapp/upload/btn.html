@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="/statics/img/ui/headlogo.ico" type="image/x-icon">
+    <title>方案设计_美作天然居</title>
+
+    <link href="/statics/css/Common/bootstrap.min.css" rel="stylesheet">
+    <link href="/statics/css/Common/font-awesome.css" rel="stylesheet">
+
+    <link href="/statics/css/Common/animate.css" rel="stylesheet">
+    <link href="/statics/css/Common/font-awesome.min.css" rel="stylesheet">
+    <link href="/statics/css/Common/style.css" rel="stylesheet">
+
+    <script src="/statics/js/Common/jquery-3.1.1.js"></script>
+    <script src="/statics/js/Common/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/statics/js/Common/jPages.js"></script>
+
+</head>
+<body>
+
+<div class="row">
+    <div class="col-sm-8 col-xs-8 col-lg-8">
+        <div class="row">
+            <div class="FilterDiv">
+                <h1><em>方案</em> - 筛选条件</h1>
+
+                <div class="FilterWrap">
+                    <div class="items">
+                        <!--item-->
+                        <div class="item" id="type">
+                            <div class="tit">
+                                房型：
+                            </div>
+                            <div class="sub">
+                                <a class="link">别墅</a>
+                                <a class="link">商业办公</a>
+                                <a class="link">三居室</a>
+                                <a class="link">两居室</a>
+                                <a class="link">小户型</a>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                        </div>
+                        <!--/item-->
+
+                        <div class="item" id="style">
+                            <div class="tit">
+                                风格：
+                            </div>
+                            <div class="sub">
+                                <a class="link">现代简约</a>
+                                <a class="link">韩式风格</a>
+                                <a class="link">日式和风</a>
+                                <a class="link">地中海</a>
+                                <a class="link" >欧洲情怀</a>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                        </div>
+                        <!--/item-->
+
+                        <div class="item" id="area">
+                            <div class="tit">
+                                面积：
+                            </div>
+                            <div class="sub">
+                                <a class="link">20㎡以下</a>
+                                <a class="link">20-40㎡</a>
+                                <a class="link">40-80㎡</a>
+                                <a class="link">80-120㎡</a>
+                                <a class="link">120㎡以上</a>
+                            </div>
+                        </div>
+                        <!--/item-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="1">
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+</div>
+
+</body>
+</html>
+
+<script>
+    $(function () {
+        selectPlansByTag();
+    });
+
+    function selectPlansByTag() {
+        var tag = new Array(3);
+        var html = "";
+        var $item = $(".item").children("div.sub").children("a");
+        $item.on("click",function () {
+            $(this).siblings().removeClass("selected");
+            $(this).addClass("selected");
+
+            var $tagName = $(this).parents(".item").attr("id");
+
+            if ($tagName ==  "type")
+                tag[0] = { "type"  : $(this).html()};
+            if ($tagName == "style")
+                tag[1] = { "style"  : $(this).html()};
+            if ($tagName == "area")
+                tag[2] = { "area"  : $(this).html()};
+
+            alert(tag);
+
+            html +=  $(this).html();
+//                $(this).parents(".item").hide();
+        });
+        console.log(tag);
+    }
+</script>

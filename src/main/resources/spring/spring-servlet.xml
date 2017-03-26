@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!-- **************************************************************** -->
+    <!--  Spring Annotation Processing                                    -->
+    <!-- **************************************************************** -->
+    <!-- 控制器映射器和控制器适配器 --><!-- 添加handler处理请求HttpRequest -->
+    <mvc:annotation-driven/>
+    <!-- 自动扫描控制器 -->
+    <context:component-scan base-package="com.dmfy.Controller"/>
+
+
+    <!-- **************************************************************** -->
+    <!-- jsp视图渲染 -->
+    <!-- **************************************************************** -->
+    <bean id="internalResourceViewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+    <!-- **************************************************************** -->
+    <!--  Thymeleaf-specific Artifacts                                    -->
+    <!--  TemplateResolver <- TemplateEngine <- ViewResolver              -->
+    <!--  html渲染                                                        -->
+    <!-- **************************************************************** -->
+    <!--<bean id="viewResolver"-->
+          <!--class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">-->
+        <!--<property name="prefix" value="/WEB-INF/"/>-->
+        <!--<property name="suffix" value=".html"/>-->
+        <!--<property name="templateMode" value="HTML"/>-->
+        <!--<property name="characterEncoding" value="UTF-8"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="templateEngine"-->
+          <!--class="org.thymeleaf.spring4.SpringTemplateEngine">-->
+        <!--<property name="templateResolver" ref="viewResolver"/>-->
+    <!--</bean>-->
+
+    <!--<bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">-->
+        <!--<property name="templateEngine" ref="templateEngine"/>-->
+        <!--<property name="characterEncoding" value="UTF-8"/>-->
+        <!--<property name="order" value="0"/>-->
+    <!--</bean>-->
+
+    <!-- **************************************************************** -->
+    <!--  dmfy.Controller dmfy.Interceptor Configuration                  -->
+    <!--  dmfy.Interceptor Configuration for handle dmfy.Controller Process         -->
+    <!--  拦截器配置                                                      -->
+    <!-- **************************************************************** -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/admin/**"/>
+            <bean class="com.dmfy.Interceptor.InitInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <mvc:default-servlet-handler />
+
+    <!-- **************************************************************** -->
+    <!--  Resource Folders Configuration                                  -->
+    <!--  Dispatcher configuration for serving static resources           -->
+    <!--  静态资源映射器                                                  -->
+    <!-- **************************************************************** -->
+    <bean name="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8" />
+        <property name="maxUploadSize" value="10485760" />
+        <property name="uploadTempDir" value="/upload/temp" />
+    </bean>
+
+    <!-- **************************************************************** -->
+    <!--  Resource Folders Configuration                                  -->
+    <!--  Dispatcher configuration for serving static resources           -->
+    <!--  静态资源映射器                                                  -->
+    <!-- **************************************************************** -->
+    <mvc:resources mapping="/statics/**" location="/statics/"/>
+    <mvc:resources mapping="/upload/**" location="/upload/"/>
+
+    <mvc:view-controller path="/" view-name="redirect:/index" />
+</beans>

@@ -1,0 +1,90 @@
+
+
+/*----------- Mall3dRow1 ----------*/
+.Mall3dRow1{}
+.Mall3dRow1 .rowLeft{float:left;width:940px;height:620px;border: 1px solid #eeeeee;}
+.Mall3dRow1 .rowRight{float:right;width:240px;height:620px;background-color:#fcfcfc;border: 1px solid #eeeeee;}
+
+
+
+/*----------- Mall3dRow2 ----------*/
+.Mall3dRow2{}
+.Mall3dRow2 .rowLeft{float:left;width:240px;background-color:#fcfcfc;border: 1px solid #eeeeee;}
+.Mall3dRow2 .rowRight{float:right;width:940px;border: 1px solid #eeeeee;}
+.Mall3dRow2 .CategoryBar240{height:280px;overflow:hidden;}
+
+.indexAd3{width:240px;height:320px;overflow:hidden;}
+.indexAd3 img{width:240px;height:320px;}
+
+
+
+/*----------- indexSliderBox ----------*/
+
+.Mall3dSliderBox{position:relative;overflow:hidden;width:1200px;height:400px;}
+.Mall3dSlider{position:relative;overflow:hidden;width:1200px;height:400px;}
+.Mall3dSlider .items {width:20000em;position:absolute;clear:both;}
+.Mall3dSlider .item{float:left;}
+.Mall3dSlider .item img{width:1200px;height:400px;}
+
+
+.Mall3dSliderPagerWrap{position:absolute;width:200px;left:50%;margin-left:-100px;bottom:20px;z-index:100;text-align:center;}
+.Mall3dSliderPager{display:inline-block;*display:inline;*zoom:1;}
+.Mall3dSliderPager a{float:left;color:#fff;font-size:14px;cursor:pointer;background-color:#999;
+	width:22px;height:22px;line-height:22px;text-align:center;text-decoration:none;margin-left:5px;
+	-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;}
+.Mall3dSliderPager a.active,
+.Mall3dSliderPager a:hover{background-color:#E4393C;}
+
+/*----------- Mall3d_Ad ----------*/
+.Mall3d_Ad{}
+.Mall3d_Ad .rowLeft{float:left;width:880px;height:520px;}
+.Mall3d_Ad .rowRight{float:right;width:300px;height:520px;}
+.Mall3d_Ad .item{float:left;width:430px;height:250px;margin-bottom:20px;}
+.Mall3d_Ad .box{border:1px solid #ddd;width:430px;height:250px;overflow:hidden;
+ -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+.Mall3d_Ad .pic{width:420px;height:210px;margin-top:8px;}
+.Mall3d_Ad .pic img{width:420px;height:210px;}
+.Mall3d_Ad .tit{width:420px;height:25px;line-height:25px;overflow:hidden;text-align:center;}
+.Mall3d_Ad .sp{float:left;width:20px;height:250px;}
+
+.aboutInfo{line-height:20px;border:1px solid #ddd;
+ -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;padding:5px 5px 5px 5px;line-height:180%;
+}
+.aboutInfo h5{font-size:13px;text-indent:30px;}
+.aboutInfo p{text-indent:30px;
+background:url(/Images/ui/dotIco.png) no-repeat 10px -115px;
+_background:url(/Images/ui/dotIco_8.png) no-repeat 10px -115px;
+}
+
+/*----------- Mall3dTool ----------*/
+.Mall3dTool{width:1200px;background-color:#fff;}
+.Mall3dTool .item{float:left;width:400px;height:100px;overflow:hidden;}
+.Mall3dTool .box{width:300px;height:90px;background-color:#f7f7f7;}
+.Mall3dTool .pic{float:left;width:100px;height:90px;text-align:center;padding-top:5px;}
+.Mall3dTool .con{float:left;width:200px;height:90px;}
+.Mall3dTool .tit{font-size:14px;height:30px;line-height:30px;}
+.Mall3dTool .txt{font-size:12px;line-height:20px;color:#666;}
+
+
+/*----------- Mall3dTool ----------*/
+.Mall3dTool2{background-color:#fff;}
+.Mall3dTool2 .item{width:240px;height:100px;overflow:hidden;}
+.Mall3dTool2 .box{width:240px;height:90px;background-color:#f7f7f7;}
+.Mall3dTool2 .pic{float:left;width:100px;height:90px;text-align:center;padding-top:5px;}
+.Mall3dTool2 .con{float:left;width:140px;height:90px;}
+.Mall3dTool2 .tit{font-size:14px;height:24px;line-height:24px;}
+.Mall3dTool2 .txt{font-size:12px;line-height:20px;color:#666;}
+
+
+/*----------- Mall3dTool ----------*/
+.tools-data .item{height:32px;line-height:32px;margin-bottom:10px;font-size:14px;}
+.tools-data .tit{font-size:16px;height:40px;line-height:40px;text-indent:10px;font-weight:bold;color: #9D633E;background-color: #F3F3F3;}
+.tools-data .txt{height:auto;line-height:22px;color:#666;}
+.tools-data .th{float:left;width:180px;text-align:right;height:32px;}
+.tools-data .td{float:left;text-align:left;}
+.tools-data .input20{margin-right:5px;}

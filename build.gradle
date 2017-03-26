@@ -1,0 +1,53 @@
+group '1.0'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'war'
+
+
+sourceCompatibility = 1.5
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+//    spring核心依赖
+    compile 'org.springframework:spring-web:4.3.4.RELEASE'
+    compile 'org.springframework:spring-jdbc:4.3.4.RELEASE'
+    compile 'org.springframework:spring-context:4.3.4.RELEASE'
+    compile 'org.springframework:spring-webmvc-portlet:4.3.4.RELEASE'
+
+//    mybatis依赖
+    compile 'org.mybatis:mybatis:3.4.1'
+    compile 'org.mybatis:mybatis-spring:1.3.0'
+
+//    文件上传
+    compile 'commons-io:commons-io:2.4'
+    compile 'commons-fileupload:commons-fileupload:1.3.2'
+
+//    json数据转换依赖
+    compile 'com.fasterxml.jackson.core:jackson-core:2.8.0'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.8.0'
+    compile 'com.fasterxml.jackson.core:jackson-annotations:2.8.0'
+
+//    html视图解析依赖
+    compile 'org.thymeleaf:thymeleaf-spring4:3.0.0.RELEASE'
+
+//    jsp
+    compile 'javax.servlet:jstl:1.2'
+
+//    junit
+    compile 'junit:junit:4.12'
+
+//    log
+    compile 'org.slf4j:slf4j-simple:1.7.21'
+
+//    mysql
+    compile 'commons-dbcp:commons-dbcp:1.4'
+    compile 'mysql:mysql-connector-java:5.1.39'
+
+//    测试模块
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.springframework:spring-test:4.3.4.RELEASE'
+}

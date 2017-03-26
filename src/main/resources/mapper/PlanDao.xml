@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dmfy.Dao.PlanDao">
+    <!-- 为Dao提供sql配置 -->
+    <select id="selectPlans" resultType="Plan">
+        select ID, name, type, style, area, visible, coverPath, planPath, time, designer
+        from plan where visible = 1
+    </select>
+
+    <select id="selectLatestPlans" resultType="Plan">
+        select ID, name, type, style, area, visible, coverPath, planPath, time, designer
+        from plan order by ID desc limit 3
+    </select>
+
+    <select id="selectPlansByTagID" resultType="Plan">
+        select ID, name, type, style, area, visible, coverPath, planPath, time, designer
+        from plan where TagID = #{ID}
+    </select>
+
+    <insert id="insertPlan">
+        insert into plan(name, type, style, area, visible, coverPath, planPath, designer)
+        values(#{name}, #{type}, #{style}, #{area}, #{visible}, #{coverPath}, #{planPath}, #{designer})
+    </insert>
+
+    <delete id="deletePlan">
+        delete from plan
+        where ID = #{ID}
+    </delete>
+
+    <update id="updatePlan">
+        update plan
+        <set>
+            <if test="name != null">name = #{name},</if>
+            <if test="type != null">type = #{type},</if>
+            <if test="style != null">style = #{style},</if>
+            <if test="area != null">area = #{area},</if>
+            <if test="coverPath != null">coverPath = #{coverPath},</if>
+            <if test="planPath != null">planPath = #{planPath},</if>
+            <if test="designer != null">designer = #{designer}</if>
+        </set>
+        where ID = #{ID}
+    </update>
+</mapper>

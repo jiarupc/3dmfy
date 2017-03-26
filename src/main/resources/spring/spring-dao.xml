@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 自动扫描控制器 -->
+    <context:component-scan base-package="com.dmfy.Dao" />
+
+    <!-- **************************************************************** -->
+    <!--      database   Configuration                                    -->
+    <!--      database       配置                                         -->
+    <!-- **************************************************************** -->
+    <!-- DB properties 读取 -->
+    <context:property-placeholder location="classpath:db.properties" />
+    <!-- DB connection pool 配置 -->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <!-- DB connection pool 属性 -->
+        <property name="driverClassName" value="${jdbc.driver}" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+
+        <!-- DBCP 私有属性 -->
+        <property name="maxWait" value="10000" />
+        <property name="maxActive" value="50" />
+        <property name="maxIdle" value="20" />
+        <property name="minIdle" value="10" />
+
+        <!-- 100秒自动回收超时连接 -->
+        <property name="removeAbandoned" value="true" />
+        <property name="removeAbandonedTimeout" value="100" />
+    </bean>
+
+    <!-- sqlSessionFactory 配置 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 注入 DB connection pool -->
+        <property name="dataSource" ref="dataSource" />
+        <!-- 读取 mybatis configuration -->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <!-- 扫描 Model别名 -->
+        <property name="typeAliasesPackage" value="com.dmfy.Model" />
+        <!-- 读取 Mapper -->
+        <property name="mapperLocations" value="classpath:mapper/*.xml" />
+    </bean>
+
+    <!-- Dao接口扫描，动态实现接口，注入spring容器 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 注入 sqlSessionFactory -->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+        <!-- 扫描Dao位置 -->
+        <property name="basePackage" value="com.dmfy.Dao" />
+    </bean>
+
+</beans>
